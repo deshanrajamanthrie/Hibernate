@@ -1,12 +1,19 @@
 package lk.ijse.hibernate.enitity;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+
+@Entity
 public class Customer {
+    @Id
     private String id;
     private String name;
     private double salary;
     private String address;
 
     public Customer() {
+
+
     }
     public Customer(String id, String name, double salary, String address) {
         this.id = id;
