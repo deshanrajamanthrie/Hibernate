@@ -1,9 +1,10 @@
 package lk.ijse.hibernate.enitity;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 
-@Entity
+@Entity(name ="Customer_Detail")
 public class Customer {
     @Id
     private String id;

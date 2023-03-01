@@ -9,10 +9,18 @@ public class Appinitializer {
 
         Customer c1 = new Customer("C003", "Pasan", 20000, "Kaluthara");
 
-        Session session = Factoryconfiguration.getInstance().getSession();          //Open in Sesstion
+        Customer c2 = new Customer("C004", "Malan", 70000, "Nagoda");
 
-        Transaction transaction = session.beginTransaction();       //Open in Transaction
-        session.update(c1);
+        Customer c3 = new Customer("C005", "Gunadasa", 80000, "Nagoda");
+
+        Customer c4 = new Customer("C006", "Siriadasa", 80000, "Beruwala");
+
+        Customer c5 = new Customer("C007", "Janaki", 80000, "Horana");
+
+        Session session = Factoryconfiguration.getInstance().getSession();
+        Transaction transaction = session.beginTransaction();
+
+        session.save(c5);
         transaction.commit();
         session.close();
 
