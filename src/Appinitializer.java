@@ -5,17 +5,17 @@ import org.hibernate.Transaction;
 
 public class Appinitializer {
     public static void main(String[] args) {
-        Customer c = new Customer();
-        c.setId("C001");
-        c.setName("Kamal");
-        c.setSalary(30000);
-        c.setAddress("Panadura");
+        Customer c = new Customer("C001", "Gunapala", 56000, "Panadura");
 
-        Session session = Factoryconfiguration.getInstance().getSession();
-        Transaction transaction = session.beginTransaction();
-        session.save(c);
+        Customer c1 = new Customer("C003", "Pasan", 20000, "Kaluthara");
+
+        Session session = Factoryconfiguration.getInstance().getSession();          //Open in Sesstion
+
+        Transaction transaction = session.beginTransaction();       //Open in Transaction
+        session.update(c1);
         transaction.commit();
         session.close();
+
 
     }
 }
