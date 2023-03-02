@@ -24,7 +24,7 @@ public class Appinitializer {
 
         Customer c3=session.get(Customer.class,"C005");
         System.out.println(c3);
-
+        session.delete(c3);
 
         transaction.commit();
         session.close();
