@@ -1,5 +1,6 @@
 import lk.ijse.hibernate.embeded.Name;
 import lk.ijse.hibernate.enitity.Customer;
+import lk.ijse.hibernate.enitity.Item;
 import lk.ijse.hibernate.util.Factoryconfiguration;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
@@ -21,7 +22,7 @@ public class Appinitializer {
 
         Customer c5 = new Customer("C007", "Janaki", 80000, "Horana");
 */
-        Customer c = new Customer("C008",name,60000,"Horana");
+        Customer c = new Customer("C002",name,60000,"Horana");
 
 
         Session session = Factoryconfiguration.getInstance().getSession();
@@ -40,7 +41,12 @@ public class Appinitializer {
 
         transaction.commit();
         session.close();*/
-
+//=======================================================================
+        Item i= new Item("I002","Soup",1000,50);
+        Session session1 = Factoryconfiguration.getInstance().getSession();
+        Transaction transaction1 = session1.beginTransaction();
+        session1.save(i);
+        transaction1.commit();
 
     }
 }
