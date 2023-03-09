@@ -74,32 +74,37 @@ public class Appinitializer {
 //==============One to Many
 
         Owner o1 = new Owner();
-        o1.setOwnerId("O001");
-        o1.setOname("Jagath");
+        o1.setOwnerId("O002");
+        o1.setOname("Supun");
 
 
         Pet p1 = new Pet();
-        p1.setpId("P001");
-        p1.setPname("Cat");
+        p1.setpId("P004");
+        p1.setPname("fish");
         p1.setOwner(o1);
 
         Pet p2 = new Pet();
-        p2.setpId("P002");
-        p2.setPname("Dog");
+        p2.setpId("P005");
+        p2.setPname("Parrot");
         p2.setOwner(o1);
 
         Pet p3 = new Pet();
-        p3.setpId("P003");
-        p3.setPname("Dog");
+        p3.setpId("P006");
+        p3.setPname("Ant");
         p3.setOwner(o1);
 
-        ArrayList<Pet> pets = new ArrayList<>();
+        //1st methology
+       /* ArrayList<Pet> pets = new ArrayList<>();
         pets.add(p1);
         pets.add(p2);
         pets.add(p3);
-        o1.setPetlist(pets);
+        o1.setPetlist(pets);*/
 
-
+        //=====================
+        //2nd Methology
+        o1.getPetlist().add(p1);
+        o1.getPetlist().add(p2);
+        o1.getPetlist().add(p3);
 
         Session session = Factoryconfiguration.getInstance().getSession();
         Transaction transaction = session.beginTransaction();
