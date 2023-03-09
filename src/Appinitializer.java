@@ -1,8 +1,10 @@
-import lk.ijse.hibernate.enitity.Laptop;
-import lk.ijse.hibernate.enitity.Student;
+import lk.ijse.hibernate.enitity.OnetoMany.Owner;
+import lk.ijse.hibernate.enitity.OnetoMany.Pet;
 import lk.ijse.hibernate.util.Factoryconfiguration;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+
+import java.util.ArrayList;
 
 public class Appinitializer {
     public static void main(String[] args) {
@@ -46,6 +48,8 @@ public class Appinitializer {
         Transaction transaction1 = session1.beginTransaction();
         session1.save(i);
         transaction1.commit();*/
+      /*  //==============Relational=====================
+      //=========One two oNe
         Student s1 = new Student();
         s1.setsId("S001");
         s1.setSname("Sachini");
@@ -65,13 +69,46 @@ public class Appinitializer {
         Laptop l2 = new Laptop();
         l2.setLid("L002");
         l2.setDescription("HP");
-        l2.setSid(s2);
+        l2.setSid(s2);*/
+
+//==============One to Many
+
+        Owner o1 = new Owner();
+        o1.setOwnerId("O001");
+        o1.setOname("Jagath");
+
+
+        Pet p1 = new Pet();
+        p1.setpId("P001");
+        p1.setPname("Cat");
+        p1.setOwner(o1);
+
+        Pet p2 = new Pet();
+        p2.setpId("P002");
+        p2.setPname("Dog");
+        p2.setOwner(o1);
+
+        Pet p3 = new Pet();
+        p3.setpId("P003");
+        p3.setPname("Dog");
+        p3.setOwner(o1);
+
+        ArrayList<Pet> pets = new ArrayList<>();
+        pets.add(p1);
+        pets.add(p2);
+        pets.add(p3);
+        o1.setPetlist(pets);
+
 
 
         Session session = Factoryconfiguration.getInstance().getSession();
         Transaction transaction = session.beginTransaction();
-        session.save(s2);
-        session.save(l2);
+
+        session.save(p1);
+        session.save(p2);
+        session.save(p3);
+        session.save(o1);
+
 
         transaction.commit();
         session.close();

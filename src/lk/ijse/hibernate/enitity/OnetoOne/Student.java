@@ -1,4 +1,4 @@
-package lk.ijse.hibernate.enitity;
+package lk.ijse.hibernate.enitity.OnetoOne;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
