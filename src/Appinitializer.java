@@ -1,3 +1,5 @@
+import lk.ijse.hibernate.enitity.ManyToMany.Lectures;
+import lk.ijse.hibernate.enitity.ManyToMany.Subject;
 import lk.ijse.hibernate.enitity.OnetoMany.Owner;
 import lk.ijse.hibernate.enitity.OnetoMany.Pet;
 import lk.ijse.hibernate.util.Factoryconfiguration;
@@ -72,7 +74,7 @@ public class Appinitializer {
         l2.setSid(s2);*/
 
 //==============One to Many
-
+/*
         Owner o1 = new Owner();
         o1.setOwnerId("O002");
         o1.setOname("Supun");
@@ -94,25 +96,82 @@ public class Appinitializer {
         p3.setOwner(o1);
 
         //1st methology
-       /* ArrayList<Pet> pets = new ArrayList<>();
+       *//* ArrayList<Pet> pets = new ArrayList<>();
         pets.add(p1);
         pets.add(p2);
         pets.add(p3);
-        o1.setPetlist(pets);*/
+        o1.setPetlist(pets);*//*
 
         //=====================
         //2nd Methology
         o1.getPetlist().add(p1);
         o1.getPetlist().add(p2);
-        o1.getPetlist().add(p3);
+        o1.getPetlist().add(p3);*/
+
+        //=====================Many to Many
+        Lectures l1 = new Lectures();
+        l1.setLid("T001");
+        l1.setLname("Niroth Sir");
+
+
+        Lectures l2 = new Lectures();
+        l2.setLid("T002");
+        l2.setLname("Prasad Sir");
+
+        //=================
+        Subject s1 = new Subject();
+        s1.setSid("S001");
+        s1.setName("Prf");
+
+
+        Subject s2 = new Subject();
+        s2.setSid("S002");
+        s2.setName("DBMS");
+
+        //===========Added sub for lectuers
+       /* ArrayList<Subject> sub1 = new ArrayList<>();// Niroth Sir
+        sub1.add(s1);
+        sub1.add(s2);
+        l1.setSublist(sub1);
+
+        ArrayList<Subject> sub2 = new ArrayList<>();  //Prasad Sir
+        sub2.add(s1);
+        sub2.add(s2);
+        l2.setSublist(sub2);
+
+        //===========Added Subject
+        ArrayList<Lectures> lec1 = new ArrayList<>();
+        lec1.add(l1);
+        lec1.add(l2);
+        s1.setLeclist(lec1);
+
+        ArrayList<Lectures> lec2 = new ArrayList<>();
+        lec2.add(l1);
+        lec1.add(l2);
+        s2.setLeclist(lec2);*/
+
+        l1.getSublist().add(s1);
+        l1.getSublist().add(s2);
+
+        l2.getSublist().add(s1);
+        l2.getSublist().add(s2);
+
+        //===================================
+
+        s1.getLeclist().add(l1);
+        s1.getLeclist().add(l2);
+
+        s2.getLeclist().add(l1);
+        s2.getLeclist().add(l2);
+
 
         Session session = Factoryconfiguration.getInstance().getSession();
         Transaction transaction = session.beginTransaction();
 
-        session.save(p1);
-        session.save(p2);
-        session.save(p3);
-        session.save(o1);
+        session.save(l1);
+        session.save(l2);
+        session.save(s1);
+        session.save(s2);
 
 
         transaction.commit();
